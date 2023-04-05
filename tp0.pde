@@ -1,3 +1,5 @@
+//Apellido y Nombre: Vega Salazar Diego
+//TP0 Comision 1
 size(800, 400);
 background(100,180,247);  
 noStroke();

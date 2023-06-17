@@ -2,7 +2,7 @@
 //legajo: 93094/4
 //comisión 1
 //https://youtu.be/z7Vaj8IVwpU
-
+//Teclas de control de velocidad de los puntos, cambio de color y reinicio de valores a un estado inicial: w, s, d, a
 int tam_rect = 20;
 int tam_ellipse = 6;
 int distancia_borde = 2;

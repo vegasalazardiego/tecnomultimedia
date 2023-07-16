@@ -1,7 +1,7 @@
 //Apellido y Nombre: Vega Salazar Diego
 //legajo: 93094/4
 //comisión 1
-//https://youtu.be/z7Vaj8IVwpU
+//https://youtu.be/F_KYtPlAZX4
 //Flujo de eleccion de la historia elegida: 1, 2, 3, 6, 10, 12, 20, 8.  
 PImage imagen_boton, imagen_fondo1, imagen_fondo2;
 boolean boton_decision1_activado, boton_decision2_activado;

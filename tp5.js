@@ -1,6 +1,7 @@
 //Apellido y Nombre: Vega Salazar Diego
 //legajo: 93094/4
 //comisión 1
+//https://www.youtube.com/watch?v=BzyYG62qqNI
 let juego;
 function setup() {
   createCanvas(400, 600);

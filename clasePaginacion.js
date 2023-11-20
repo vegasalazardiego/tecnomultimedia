@@ -20,7 +20,7 @@ class Paginacion{
     this.pagina[16] = [0, -1, -1];
     this.pagina[17] = [0, -1, -1];
   }
-  paginaSiguiente(numero_pagina, opcion){
+  paginaSiguiente(numero_pagina, opcion){    
     return this.pagina[numero_pagina][opcion - 1]; //opcion puede ser 1, 2 o 3 y los indices arrancan en 0;
   }
 }

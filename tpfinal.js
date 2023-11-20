@@ -1,6 +1,6 @@
 let libro;
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 800);
   libro = new Libro();
 }
 function draw() {  

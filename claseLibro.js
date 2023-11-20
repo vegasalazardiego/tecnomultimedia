@@ -21,6 +21,7 @@ class Libro{
       this.botones.mostrarBotonCreditos();
       this.textos.mostrarTextoOpcion2(this.pagina_actual);      
     }else{
+      this.imagenes.mostrarFondo();
       this.imagenes.mostrarImagen(this.pagina_actual);
       this.textos.mostrarTextoPrincipal(this.pagina_actual);
       this.botones.mostrarBoton1();      

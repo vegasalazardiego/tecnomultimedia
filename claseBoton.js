@@ -9,13 +9,13 @@ class Boton{
     this.posX_boton_creditos = width/2 - this.ancho_boton - 60;
     this.posY_boton_creditos = height - this.alto_boton * 1;
     
-    this.posX_boton1 = width - 40 - this.ancho_boton;
+    this.posX_boton1 = width - 20 - this.ancho_boton;
     this.posY_boton1 = height / 2  + height / 2 / 3 * 0;
     
-    this.posX_boton2 = width - 40 - this.ancho_boton;
+    this.posX_boton2 = width - 20 - this.ancho_boton;
     this.posY_boton2 = height / 2 + height / 2  / 3 * 1;
     
-    this.posX_boton3 = width - 40 - this.ancho_boton;
+    this.posX_boton3 = width - 20 - this.ancho_boton;
     this.posY_boton3 = height / 2  + height / 2 / 3 * 2;
   }
   mostrarBotonInicio(){
@@ -32,19 +32,19 @@ class Boton{
   }
   mostrarBoton1(){
     push()
-    fill(255,0,0);
+    fill(63,63,63);
     rect(this.posX_boton1, this.posY_boton1, this.ancho_boton, this.alto_boton);
     pop();
   }
   mostrarBoton2(){
     push()
-    fill(0,255,0);
+    fill(63,63,63);
     rect(this.posX_boton2, this.posY_boton2, this.ancho_boton, this.alto_boton);
     pop();
   }
   mostrarBoton3(){
     push()
-    fill(0, 0, 255);
+    fill(63,63,63);
     rect(this.posX_boton3, this.posY_boton3, this.ancho_boton, this.alto_boton);
     pop();
   }

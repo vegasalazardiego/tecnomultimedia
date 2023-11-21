@@ -9,4 +9,12 @@ function draw() {
 }
 function mousePressed(){
   libro.cambiarPagina(mouseX, mouseY);
+  if (keyCode === RIGHT_ARROW && !libro.juego.juegoIniciado) { //AHORA JUEGO ES UNA PROPIEDAD DE LIBRO
+    libro.juego.juegoIniciado = true;
+  }
+}
+function keyPressed() {
+  if (keyCode === RIGHT_ARROW && !libro.juego.juegoIniciado) { //AHORA JUEGO ES UNA PROPIEDAD DE LIBRO
+    libro.juego.juegoIniciado = true;
+  }
 }

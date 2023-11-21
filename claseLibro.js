@@ -4,7 +4,9 @@ class Libro{
     this.imagenes = new Imagen();    
     this.paginacion = new Paginacion();
     this.botones = new Boton();
-    this.pagina_actual = 0;        
+    this.pagina_actual = 0;      
+    
+    this.juego = new Juego();
   }
   puntoEnZonaRectangular(posX_punto, posY_punto, posX_zona, posY_zona, ancho_zona, alto_zona){
     if (posX_punto >= posX_zona && posX_punto <= posX_zona + ancho_zona && posY_punto >= posY_zona && posY_punto <= posY_zona + alto_zona){
@@ -20,6 +22,20 @@ class Libro{
       this.textos.mostrarTextoOpcion1(this.pagina_actual);
       this.botones.mostrarBotonCreditos();
       this.textos.mostrarTextoOpcion2(this.pagina_actual);      
+    }else if(this.pagina_actual === 10){
+      background(0);
+      if (this.juego.juegoIniciado) {
+        this.juego.jugando();
+      } else {
+        if (!this.juego.juegoTerminado) {
+          this.juego.instrucciones();
+        }
+      }
+
+      if (this.juego.juegoTerminado) {
+        this.juego.botonReinicio.verificarClic();
+      }      
+      
     }else{
       this.imagenes.mostrarFondo();
       this.imagenes.mostrarImagen(this.pagina_actual);

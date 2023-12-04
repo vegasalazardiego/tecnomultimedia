@@ -1,5 +1,5 @@
 class Juego {
-  constructor() {
+  constructor(balas_activadas) {
     this.fw = 600;
     this.fh = 450;
     this.sy = 100;
@@ -11,7 +11,10 @@ class Juego {
     this.juegoTerminado = false;
     this.tiempo = 0;
     this.juegoIniciado = false;
-    this.mostrarInstrucciones = false;
+    this.mostrarInstrucciones = true;
+    this.paginaActual = 'juego'
+    this.juegoGanado = false;
+ //Agregado para saber que estoy en el juego
     
     /***
       MODIFICACION PARA REEMPLAZAR EL USO DE PRELOAD      
@@ -21,9 +24,13 @@ class Juego {
     this.sabuesos = loadImage("data/sabuesomecanico.jpg");
     this.personaje = loadImage("data/personaje.jpg");
     
+    //ACtivacion de las balas
+    this.balas_activadas = balas_activadas;
 
     for (let i = 0; i < 7; i++) {
-      this.balacera.push(new Bala(random(600, 800), random(10, 450), 100, 30, this.balitas)); //variable global balitas ahora es una propiedad del objeto Juego
+      if (this.balas_activadas){//Crea las balas siempre y cuando haga falta
+        this.balacera.push(new Bala(random(600, 800), random(10, 450), 100, 30, this.balitas)); //variable global balitas ahora es una propiedad del objeto Juego
+      }
       this.enemigos.push(new Sabueso(random(600, 800), random(10, 450), 40, 40, this.sabuesos)); //variable global sabuesos ahora es una propiedad del objeto Juego
     }
 
@@ -58,7 +65,7 @@ class Juego {
   }
 
   jugando() {
-    if (this.mostrarInstrucciones && this.juegoTerminado) {
+    if (this.mostrarInstrucciones) {  //MODIFICACION PARA MOSTRAR INSTRUCCIONES
       this.instrucciones();
     } else {
       if (frameCount % 60 == 0) {
@@ -80,15 +87,17 @@ class Juego {
           text("Vidas restantes: " + this.vidas, 20, 20);
           text("Tiempo " + this.tiempo, 20, 40);
 
-          for (let i = 0; i < this.balacera.length; i++) {
-            this.balacera[i].dibujarBala();
-            if (!this.balacera[i].impacto) {
-              this.balacera[i].moverBala();
-              if (this.choqueBala(this.balacera[i])) {
-                this.balacera[i].reiniciar();
-              }
-              if (this.balacera[i].fueraDePantalla()) {
-                this.balacera[i].reiniciar();
+          if (this.balas_activadas){
+            for (let i = 0; i < this.balacera.length; i++) {
+              this.balacera[i].dibujarBala();
+              if (!this.balacera[i].impacto) {
+                this.balacera[i].moverBala();
+                if (this.choqueBala(this.balacera[i])) {
+                  this.balacera[i].reiniciar();
+                }
+                if (this.balacera[i].fueraDePantalla()) {
+                  this.balacera[i].reiniciar();
+                }
               }
             }
           }
@@ -127,7 +136,7 @@ class Juego {
   }
 
   choqueSabueso(sabueso) {
-    if (!sabueso.impacto && this.colisionSabueso(sabueso.sbx, sabueso.sby, sabueso.sbw, sabueso.sbh, this.protagonista.px, this.protagonista.py, this.protagonista.pw, this.protagonista.ph)) {
+    if (!sabueso.impacto && this.colision(sabueso.sbx, sabueso.sby, sabueso.sbw, sabueso.sbh, this.protagonista.px, this.protagonista.py, this.protagonista.pw, this.protagonista.ph)) {
       sabueso.impacto = true;
       this.vidas--;
       return true; // Devolver true cuando hay una colisión
@@ -144,30 +153,75 @@ class Juego {
     );
   }
 
-  colisionSabueso(sbx, sby, sbw, sbh, px, py, pancho, palto) {
-    return (
-      sbx + sbw > px &&
-      sbx < px + pancho &&
-      sby + sbh > py &&
-      sby < py + palto
-    );
-  }
+
 
   reiniciarJuego() {
     this.vidas = 5;
     this.tiempo = 0;
     this.estado = 'instrucciones';
-
-    for (let i = 0; i < this.balacera.length; i++) {
-      this.balacera[i].reiniciar();
+    
+    if (this.balas_activadas){
+      for (let i = 0; i < this.balacera.length; i++) {
+        this.balacera[i].reiniciar();
+      }
     }
     for (let j = 0; j < this.enemigos.length; j++) {
       this.enemigos[j].reiniciar();
     }
     this.juegoTerminado = false;
+    
+    //MODIFICACION PARA MOSTRAR INSTRUCCIONES
+    this.mostrarInstrucciones = true;
   }
 
   dibujarBotonReinicio() {
     this.botonReinicio.mostrar();
+  }
+    iniciarJuego() {
+    this.juegoIniciado = true;
+  }
+   manejarTeclaPresionada() {
+    if (keyCode === RIGHT_ARROW && this.mostrarInstrucciones) {  //MODIFICACION PARA MOSTRAR INSTRUCCIONES
+      this.mostrarInstrucciones = false; //Antes de iniciar el juego se desactivan las instrucciones
+      this.iniciarJuego();
+    }
+  }
+  manejarClicJuego() {
+    // Lógica específica para manejar clics en el juego al principio
+    if (this.paginaActual === 'juego') {
+      this.iniciarJuego();
+    } else {
+      this.avanzarPaginaManual();
+    }
+  }
+   manejarEntrada() {
+    if (mouseIsPressed) {
+      this.manejarClicJuego();
+    }
+
+    if (keyIsDown(RIGHT_ARROW)) {
+      this.manejarFlechaDerecha();
+    }
+
+    if (keyIsPressed) {
+      this.manejarTeclaPresionada();
+    }
+  }
+cambiarPagina(pagina) {
+    this.paginaActual = pagina;
+  }
+
+
+ 
+    verificarCondicionCambioPagina() {
+    if (this.paginaActual === 'juego') {
+      if (this.juegoGanado) {
+        this.avanzarPaginaManual();
+      }
+    }
+  }
+   avanzarPaginaManual() {
+    // Cambiar la página directamente aquí, sin depender de la instancia de libro
+    this.cambiarPagina('siguiente'); 
   }
 }

@@ -1,28 +1,30 @@
-class Libro{
-  constructor(cantidad_paginas){
-    this.textos = new Texto();    
-    this.imagenes = new Imagen();    
+class Libro {
+  constructor(cantidad_paginas) {
+    this.textos = new Texto();
+    this.imagenes = new Imagen();
     this.paginacion = new Paginacion();
     this.botones = new Boton();
-    this.pagina_actual = 0;      
+    this.pagina_actual = 0;
+    this.paginaActual = 'juego'; // Inicializamos la página actual en 'juego'
+    this.juego = new Juego(true);
     
-    this.juego = new Juego();
+    //Modificacion juego sin balas
+    this.juego_sin_balas = new Juego(false);
   }
-  puntoEnZonaRectangular(posX_punto, posY_punto, posX_zona, posY_zona, ancho_zona, alto_zona){
-    if (posX_punto >= posX_zona && posX_punto <= posX_zona + ancho_zona && posY_punto >= posY_zona && posY_punto <= posY_zona + alto_zona){
-      return true;
-    }else{
-      return false;
-    }  
+
+  puntoEnZonaRectangular(posX_punto, posY_punto, posX_zona, posY_zona, ancho_zona, alto_zona) {
+    return posX_punto >= posX_zona && posX_punto <= posX_zona + ancho_zona && posY_punto >= posY_zona && posY_punto <= posY_zona + alto_zona;
   }
-  mostrar(){    
-    if (this.pagina_actual === 0){
+
+  mostrar() {
+    if (this.pagina_actual === 0) {
       this.imagenes.mostrarImagen(this.pagina_actual);
       this.botones.mostrarBotonInicio();
       this.textos.mostrarTextoOpcion1(this.pagina_actual);
       this.botones.mostrarBotonCreditos();
-      this.textos.mostrarTextoOpcion2(this.pagina_actual);      
-    }else if(this.pagina_actual === 10){
+      this.textos.mostrarTextoOpcion2(this.pagina_actual);
+      
+   } else if (this.pagina_actual === 10) {
       background(0);
       if (this.juego.juegoIniciado) {
         this.juego.jugando();
@@ -34,8 +36,28 @@ class Libro{
 
       if (this.juego.juegoTerminado) {
         this.juego.botonReinicio.verificarClic();
-      }      
-      
+        if (this.juego.vidas > 0 && this.juego.tiempo >= 20) {
+          console.log("Ganaste el juego. Mostrar botón siguiente.");
+          this.mostrarBotonSiguiente();
+        }
+      }
+    } else if (this.pagina_actual === 5) {
+      background(0);
+      if (this.juego_sin_balas.juegoIniciado) {
+        this.juego_sin_balas.jugando();
+      } else {
+        if (!this.juego_sin_balas.juegoTerminado) {
+          this.juego_sin_balas.instrucciones();
+        }
+      }
+
+      if (this.juego_sin_balas.juegoTerminado) {
+        this.juego_sin_balas.botonReinicio.verificarClic();
+        if (this.juego_sin_balas.vidas > 0 && this.juego_sin_balas.tiempo >= 20) {
+          console.log("Ganaste el juego. Mostrar botón siguiente.");
+          this.mostrarBotonSiguiente();
+        }
+      } 
     }else{
       this.imagenes.mostrarFondo();
       this.imagenes.mostrarImagen(this.pagina_actual);
@@ -75,6 +97,30 @@ class Libro{
           this.pagina_actual = this.paginacion.paginaSiguiente(this.pagina_actual, 3); //(pagina actual y opcion elegida)
         }
       }                
+    }
+  }
+    mostrarBotonSiguiente() {
+     push();
+    fill(0, 0, 255);
+    rect(width - 120, height - 60, 100, 40);
+    fill(255);
+    textSize(16);
+    text("Siguiente", width - 110, height - 40);
+    pop();
+  }
+
+  manejarClicBotonSiguiente(x, y) {
+    if (
+      this.puntoEnZonaRectangular(x, y, width - 120, height - 60, 100, 40) &&
+      ((this.juego_sin_balas.vidas > 0 && this.juego_sin_balas.tiempo >= 20) ||
+        (this.juego.vidas > 0 && this.juego.tiempo >= 20)) &&
+      (this.pagina_actual === 10 || this.pagina_actual === 5)      
+    ) {
+      console.log("Clic en el botón siguiente. Cambiar de página.");
+      //MODIFICACION PARA REINICIAR EL JUEGO USANDO UN METODO YA EXISTENTE
+      this.juego.reiniciarJuego();
+      this.juego_sin_balas.reiniciarJuego();
+      this.pagina_actual = this.paginacion.paginaSiguiente(this.pagina_actual, 1);
     }
   }
 }

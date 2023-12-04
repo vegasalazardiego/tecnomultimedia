@@ -8,7 +8,7 @@ class BotonJuego {
     this.accion = accion;
   }
 
-  mostrar() {
+  mostrar(){
     fill(200);
     rect(this.x, this.y, this.ancho, this.alto);
     fill(0);
@@ -16,7 +16,7 @@ class BotonJuego {
     text(this.etiqueta, 250 + this.ancho / 2, this.y + this.alto / 2);
   }
 
-  verificarClic() {
+  verificarClic(){
     if (
       mouseX > this.x &&
       mouseX < this.x + this.ancho &&

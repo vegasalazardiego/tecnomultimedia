@@ -1,20 +1,27 @@
 let libro;
+
 function setup() {
   createCanvas(600, 800);
   libro = new Libro();
 }
-function draw() {  
+
+function draw() {
   background(150);
-  libro.mostrar();
+  libro.mostrar(); // 
+  // Actualizar y mostrar el juego
+  // Dibujar el botón de siguiente si es necesario
+
+
 }
-function mousePressed(){
-  libro.cambiarPagina(mouseX, mouseY);
-  if (keyCode === RIGHT_ARROW && !libro.juego.juegoIniciado) { //AHORA JUEGO ES UNA PROPIEDAD DE LIBRO
-    libro.juego.juegoIniciado = true;
-  }
+
+function mousePressed() {
+  libro.cambiarPagina(mouseX,mouseY);
+  libro.juego.manejarClicJuego(); // Llamamos al método manejarClicJuego de la instancia de Juego
+libro.manejarClicBotonSiguiente(mouseX, mouseY);
+  libro.juego_sin_balas.manejarClicJuego(); // Llamamos al método manejarClicJuego de la instancia de Juego
 }
+
 function keyPressed() {
-  if (keyCode === RIGHT_ARROW && !libro.juego.juegoIniciado) { //AHORA JUEGO ES UNA PROPIEDAD DE LIBRO
-    libro.juego.juegoIniciado = true;
-  }
+  libro.juego.manejarTeclaPresionada(); // Llamamos al método manejarTeclaPresionada de la instancia de Juego
+  libro.juego_sin_balas.manejarTeclaPresionada();
 }

@@ -79,12 +79,12 @@ class Texto{
     
     this.posX_texto_principal = width / 2 + 5;
     this.posY_texto_principal = 40;
-    this.ancho_texto_principal = width / 2 - 140;
+    this.ancho_texto_principal = width / 2 - 140 * 0.6; //MODIFICACION DE TAMANIO
     this.alto_texto_principal = height / 2 - 40 * 2;
     
     this.posX_texto_opcion1 = width / 2 + 5;
     this.posY_texto_opcion1 = height / 2  + height / 2 / 3 * 0;
-    this.ancho_texto_opcion1 = width / 2 - 140;
+    this.ancho_texto_opcion1 = width / 2 - 140 * 0.65; //MODIFICACION DE TAMANIO
     this.alto_texto_opcion1 = 100//(height / 2) / 3 ;
     
     this.posX_texto_opcion2 = this.posX_texto_opcion1; 
@@ -97,18 +97,18 @@ class Texto{
     this.ancho_texto_opcion3 = this.ancho_texto_opcion1;
     this.alto_texto_opcion3 = this.alto_texto_opcion1;
     
-    textSize(17);
+    textSize(14); //MODIFICACION DE TAMANIO
   }
   mostrarTextoPrincipal(numero_pagina){    
     text(this.texto_principal[numero_pagina], this.posX_texto_principal, this.posY_texto_principal, this.ancho_texto_principal, this.alto_texto_principal);
   }
-  mostrarTextoOpcion1(numero_pagina){
+  mostrarTextoOpcion1(numero_pagina){ //MODIFICACION DE TAMANIO DE FUENTE Y EN PAGINA 0, SE MULTIPLICA POR UNA CONSTANTE PARA DISMINUIR EL TAMANIO
     push();    
-    textSize(16);
+    textSize(13); 
     //fill(241, 241, 241);
     if (numero_pagina === 0){
       textAlign(CENTER);
-      text(this.texto_opcion1[numero_pagina], width/2 - 100 - 60, height - 50 * 3, 100, 50); //Se coloca el texto dentro del boton inicio manualmente sin parametros  **experimentar con parametros           
+      text(this.texto_opcion1[numero_pagina], width/2 - 100*0.5 - 60, height - 50 * 3*0.5, 100 * 0.5, 50 * 0.5); //Se coloca el texto dentro del boton inicio manualmente sin parametros  **experimentar con parametros           
     }else{
       textAlign(RIGHT);
       text(this.texto_opcion1[numero_pagina], this.posX_texto_opcion1, this.posY_texto_opcion1, this.ancho_texto_opcion1, this.alto_texto_opcion1);
@@ -117,10 +117,10 @@ class Texto{
   }
   mostrarTextoOpcion2(numero_pagina){   
     push();    
-    textSize(16);
+    textSize(13); //MODIFICACION DE TAMANIO
     if (numero_pagina === 0){
       textAlign(CENTER);
-      text(this.texto_opcion2[numero_pagina], width/2 - 100 - 60, height - 50, 100, 50);           
+      text(this.texto_opcion2[numero_pagina], width/2 - 100 *0.5- 60, height - 50 *0.5, 100 * 0.5, 50 * 0.5);           
     }else{ 
       textAlign(RIGHT);
       text(this.texto_opcion2[numero_pagina], this.posX_texto_opcion2, this.posY_texto_opcion2, this.ancho_texto_opcion2, this.alto_texto_opcion2);
@@ -130,7 +130,7 @@ class Texto{
   mostrarTextoOpcion3(numero_pagina){     
     push();
     textAlign(RIGHT);
-    textSize(16);
+    textSize(13); //MODIFICACION DE TAMANIO
     text(this.texto_opcion3[numero_pagina], this.posX_texto_opcion3, this.posY_texto_opcion3, this.ancho_texto_opcion3, this.alto_texto_opcion3);
     pop();
   }

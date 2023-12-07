@@ -8,12 +8,12 @@ class BotonJuego {
     this.accion = accion;
   }
 
-  mostrar(){
+  mostrar(){ //MODIFICACION DE TAMANIO: SE MULTIPLICA POR UNA COSNTANTE 0.5 Y SE CAMBIA EL TAMANIO FUENTE
     fill(200);
     rect(this.x, this.y, this.ancho, this.alto);
     fill(0);
-    textSize(16);
-    text(this.etiqueta, 250 + this.ancho / 2, this.y + this.alto / 2);
+    textSize(12);
+    text(this.etiqueta, 250 * 0.5 + this.ancho / 2 * 0.5, this.y + this.alto / 2);
   }
 
   verificarClic(){

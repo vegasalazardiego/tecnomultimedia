@@ -1,7 +1,7 @@
 class Boton{
   constructor(){    
-    this.ancho_boton = 100;
-    this.alto_boton = 50;
+    this.ancho_boton = 100 * 0.5; // MODIFICACION TAMANIO
+    this.alto_boton = 50 * 0.5; // MODIFICACION TAMANIO
     
     this.posX_boton_inicio = width/2 - this.ancho_boton - 60;
     this.posY_boton_inicio = height - this.alto_boton * 3;

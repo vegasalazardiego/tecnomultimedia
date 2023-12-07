@@ -1,7 +1,7 @@
 let libro;
 
 function setup() {
-  createCanvas(600, 800);
+  createCanvas(374,600);
   libro = new Libro();
 }
 

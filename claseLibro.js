@@ -78,7 +78,7 @@ class Libro {
   
   cambiarPagina(posX_mouse, posY_mouse){        
     if (this.pagina_actual === 0){
-      if (this.puntoEnZonaRectangular(posX_mouse, posY_mouse, this.botones.posX_boton_inicio, this.botones.posY_boton_inicio, 100, 50)){
+      if (this.puntoEnZonaRectangular(posX_mouse, posY_mouse, this.botones.posX_boton_inicio, this.botones.posY_boton_inicio, 100 * 0.5, 50 * 0.5)){ //MODIFICACION TAMANIO PANTALLA
         this.pagina_actual = this.paginacion.paginaSiguiente(this.pagina_actual, 1); //(pagina actual y opcion elegida)
       }else if (this.puntoEnZonaRectangular(posX_mouse, posY_mouse, this.botones.posX_boton_creditos, this.botones.posY_boton_creditos, this.botones.ancho_boton, this.botones.alto_boton)){
         this.pagina_actual = this.paginacion.paginaSiguiente(this.pagina_actual, 2); //(pagina actual y opcion elegida)

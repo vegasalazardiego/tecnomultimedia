@@ -1,7 +1,10 @@
 class Juego {
   constructor(balas_activadas) {
-    this.fw = 600;
-    this.fh = 450;
+    //this.fw = 600;
+    //this.fh = 450;
+    this.fw = width;
+    this.fh = height;
+    
     this.sy = 100;
     this.sx = 100;
     this.vidas = 5;
@@ -21,8 +24,8 @@ class Juego {
     ***/
     this.fondo = loadImage("data/fondo.jpg");
     this.balitas = loadImage("data/bala.png");
-    this.sabuesos = loadImage("data/sabuesomecanico.jpg");
-    this.personaje = loadImage("data/personaje.jpg");
+    this.sabuesos = loadImage("data/sabuesomecanico.png");
+    this.personaje = loadImage("data/personaje.png");
     
     //ACtivacion de las balas
     this.balas_activadas = balas_activadas;
@@ -37,31 +40,24 @@ class Juego {
     this.inicializarBotonReinicio();
   }
 
-  inicializarBotonReinicio() {
-    this.botonReinicio = new BotonJuego( // CAMBIO EL NOMBRE DE LA CLASE POR LLAMARSE IGUAL QUE LA CLASE BOTON QUE USA LIBRO
-      280,
-      height / 2 + 50,
-      100,
-      40,
-      "Reiniciar",
+  inicializarBotonReinicio() {// CAMBIO EL NOMBRE DE LA CLASE POR LLAMARSE IGUAL QUE LA CLASE BOTON QUE USA LIBRO
+    this.botonReinicio = new BotonJuego(280 * 0.5,height / 2 + 50 * 0.5, 100 * 0.5, 40 * 0.5, "Reiniciar",
       () => this.reiniciarJuego()
     );
   }
 
-  instrucciones() {
+  instrucciones() { //MODIFICACION DE TAMANIO width * 0.8, textSize()*3 usado para crear una caja para los textos y cambio de tamaño de fuente
     image(this.fondo, 0, 0, this.fw, this.fh);//variable global fondo ahora es una propiedad del objeto Juego
-    textSize(32);
+    textSize(20);
     fill(255, 255, 255);
-    text("¡Corre Montag!", 190, 50);
+    text("¡Corre Montag!", width/2 - textWidth("¡Corre Montag!")/2, 50);
     textSize(12);
     text(
       "¡Montag fue descubierto! Nuestro protagonista debe esquivar los disparos de sus excompañeros y correr de los sabuesos mecánicos hasta que vengan los refuerzos.",
-      0,
-      100
-    );
-    text("Instrucciones: Usa las flechas de arriba y abajo para esquivar hasta que vengan los refuerzos.", 20, 200);
-    textSize(24);
-    text("Usa la flecha derecha para empezar a jugar", 40, 400);
+      40, 100, width * 0.8, textSize()*3);
+    text("Instrucciones: Usa las flechas de arriba y abajo para esquivar hasta que vengan los refuerzos.", 40, 200, width * 0.8, textSize()*3);
+    textSize(20);
+    text("Usa la flecha derecha para empezar a jugar", 40, 400, width*0.8, textSize()*3);
   }
 
   jugando() {
@@ -76,8 +72,8 @@ class Juego {
         if (this.tiempo >= 20) {
           background(0, 122, 0); // Cambiar el fondo a verde cuando el jugador gana
           fill(0, 255, 0);
-          textSize(32);
-          text("¡Ganaste!", 250, 200);
+          textSize(20); //CAMBIO DE TAMANIO
+          text("¡Ganaste!", 250 * 0.5, 200 * 0.5); //CAMBIO DE TAMANIO
           this.juegoTerminado = true;
           this.dibujarBotonReinicio();
         } else {
@@ -118,8 +114,8 @@ class Juego {
       } else {
         background(122, 0, 0); // Cambiar el fondo a rojo cuando el jugador pierde
         fill(255, 0, 0);
-        textSize(32);
-        text("¡Perdiste!", 250, 200);
+        textSize(20); //CAMBIO DE TAMANIO
+        text("¡Perdiste!", 250 * 0.5, 200 * 0.5); //CAMBIO DE TAMANIO
         this.dibujarBotonReinicio();
         this.juegoTerminado = true;
       }

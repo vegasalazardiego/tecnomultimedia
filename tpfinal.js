@@ -1,3 +1,5 @@
+//Alumnos: Matías Mariescurrena, Vega Salazar Diego
+//Comisión 1
 let libro;
 
 function setup() {

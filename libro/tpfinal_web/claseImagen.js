@@ -1,6 +1,6 @@
 class Imagen {
   constructor() {
-    this.ruta = "imagenes/";
+    this.ruta = "Imagenes/";
     this.imagenes = [];
     for (let i = 0; i < 18; i++) {
       this.imagenes[i] = loadImage(this.ruta + "imagen" + i + ".png");

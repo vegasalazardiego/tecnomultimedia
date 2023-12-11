@@ -5,7 +5,7 @@ class Imagen {
     for (let i = 0; i < 18; i++) {
       this.imagenes[i] = loadImage(this.ruta + "imagen" + i + ".png");
     }
-    this.fondo = loadImage("imagenes/fondo.png");
+    this.fondo = loadImage("Imagenes/fondo.png");
     this.posX = 5;
     this.posY = 20;
     this.ancho = width/2 - 10;

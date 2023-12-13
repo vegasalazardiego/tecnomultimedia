@@ -12,7 +12,7 @@
     <title>TP WEB</title>
   </head>
   <body>
-    <div class="paper container">
+    <div class="paper container" id="ARRIBA">
       <h1>Página de Modal sobre el libro Fahrenheit 451, con juego incluído</h1>
 
       <div class="row flex-spaces">
@@ -32,23 +32,22 @@
         </div>
         <div class="sm-4 col">
           <div class="row flex-spaces child-borders">
-            <label class="paper-btn margin" for="modal-2">¡Haz click quí para ver como fué la producción de este trabajo!</label>
+            <label class="paper-btn margin" for="modal-2">¡Haz click aquí para más detalles del codigo!</label>
           </div>
           <input class="modal-state" id="modal-2" type="checkbox">
           <div class="modal">
             <label class="modal-bg" for="modal-2"></label>
             <div class="modal-body">
               <label class="btn-close" for="modal-2">X</label>              
-              <h4 class="modal-title">Modal Title</h4>
-              <h5 class="modal-subtitle">Modal Subtitle</h5>
-              <p class="modal-text">This is an example of modal which is implemented with pure CSS! :D</p>
-              <label for="modal-2">Nice!</label>
+              <h4 class="modal-title">Proyecto final WEB etapa 2</h4>              
+              <p class="modal-text">El proyecto completo se encuentra alojado en un repositorio publico de Github: <a href="https://github.com/vegasalazardiego/tecnomultimedia/tree/tpWeb" target="_blank">https://github.com/vegasalazardiego/tecnomultimedia/tree/tpWeb</a></p>
+              <label for="modal-2">¡Gracias por pasar por esta sección!</label>
             </div>
           </div>
         </div>
       </div>      
       <article class="article">
-        <h1 class="article-title"><a href="">Realizacion del proyecto</a></h1>
+        <h1 class="article-title">Realizacion del proyecto</h1>
         <p class="article-meta">Written by <a href="#">me</a></p>
         <p class="text-lead"> Etapas de trabajo </p>
         <div class="row flex-spaces tabs">
@@ -76,7 +75,7 @@
               <li><span>Un acceso a la Aventura grafica completa [TP#Final — Etapa 1] para visualizar e interactuar en línea (es decir, en una página web integrada al sitio).<br></span></li>
             </ul>
             <hr>
-            <p dir="ltr" role="presentation" style=""><strong><span style="background-color: yellow;">Recomendaciones:</span><br></strong></p>
+            <p dir="ltr" role="presentation"><strong><span style="background-color: yellow;">Recomendaciones:</span><br></strong></p>
             <ul>
               <li>El diseño visual e interactivo del sitio tiene que ser acorde a la estética del <span>TP#Final — Etapa 1</span> (Tipografías, paletas de color, tratamiento formal, etc.)</li>
               <li>Se recomienda incorporar el potencial de algunos de los <em>frameworks</em> que presentamos en Tecnologías web como base constructiva del sitio.</li>
@@ -94,7 +93,7 @@
 
           </div>
           <div class="content" id="content2">
-            <h3>Diseño del juego<br></h3>
+            <h3>Diseño<br></h3>
 
             <p>Unidos con el fin de entregar el trabajo final de la materia Tecnologia multimedial 1. Nuestra visión era crear un juego que transportara a los jugadores a un universo de Ray BradBradburry.</p>
             <ul>
@@ -105,28 +104,34 @@
               <img src="imagenesWEB/sabuesomecanico.png" alt="Sabueso mecánico">
               <img src="imagenesWEB/bala.png" alt="Bala">
               <img src="imagenesWEB/game_desing0.png" alt="Diseño con personaje y enemigos">
+              <li><Strong>Diseño de la aventura grafica</Strong>: El tiempo de diseño del libro no fue menor al diseño del juego, luego de analizar varias opciones optamos por un diseño similar al usardo en las pantallas de los cajeros automaticos</li>
+              <img src="imagenesWEB/design.png" alt="Diseño de libro">
             </ul>
           </div>
           <div class="content" id="content3">
             <p>
-              Bacon ipsum dolor sit amet beef venison beef ribs kielbasa...
+              <img src="imagenesWEB/matias.png" class="float-left">
+              Se usó el juego desarrollado por Matias el cual sufrió algunas modificaciones para este proyecto, el juego original sin modificaciones puede encontrarse en el repositorio publico de GitHub 
+              <a href="https://github.com/reisch03/tecnomultimedia/tree/tp5" target="_blank">TP5</a>.
             </p>
+            <img src="imagenesWEB/explicacion0.png" alt="sistema de control de pantallas">
+            <img src="imagenesWEB/explicacion1.png" alt="sistema de control de pantallas">
             <p>
-              Brisket meatball turkey short loin boudin leberkas meatloaf...
+              <img src="imagenesWEB/diego.png" class="float-right">  
+              Tras un largo debate se optó por usar el sistema que controla las pantallas desarrollado por Diego. Y el desafio sería reepenzar el sistema usando Programación Orientada a objetos puesto que el sistema original fue codificado en Procesing. El mismo puede verse el el repositorio público de Github <a href="https://github.com/vegasalazardiego/tecnomultimedia/tree/tp3" target="_blank">TP3</a>                          
             </p>
           </div>
           <div class="content" id="content4">
             <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket...
+              El juego fue sometido a muchas pruebas y en cada prueba se encontraban errores, uno tras otro, botones que no se dirigian a ninguna parte, imagenes que no cargaban, ¡¡DESAPARICION DE BOTONES!!, botones invisibles pero activos, desaparicion de la pantalla con intrucciones del juego, por nombrar algunos. <br>
+               Aquí un ejemplo de como al momento de corregir la implementación del juego dentro de la aventura grafica, se detectó que existia un botón invisible pero activo.               
             </p>
+            <iframe width="374" height="315" src="https://www.youtube.com/embed/d83Ll_KC9zY?si=ql9jVZUF2l0QbW1p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>            
           </div>
-        </div>
-
-      
-        <div class="row">
-          <button>Read More</button>
-          <button>5 Comments</button>
-        </div>
+        </div>  
+        <div>
+          <button><a style="text-decoration:none" href="#ARRIBA">VOLVER ARRIBA</a></button>
+        </div>            
       </article>
       <div class="paper container">
         <h2 class="modal-title">Alumnos</h2>
